@@ -1,0 +1,37 @@
+{
+  "name": "magma-immersive-startup",
+  "version": "1.0.0",
+  "description": "Premium scroll storytelling platform with GSAP animations and canvas sequences",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx http-server -p 3000 -o",
+    "start": "npx http-server -p 3000",
+    "build": "echo 'Static site - no build required'"
+  },
+  "keywords": [
+    "scroll-animation",
+    "gsap",
+    "locomotive-scroll",
+    "canvas-animation",
+    "immersive-web",
+    "storytelling",
+    "premium-website"
+  ],
+  "author": "Lakhya <lakhya911@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "gsap": "^3.13.0",
+    "locomotive-scroll": "^3.5.4"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lakhyajit-96/magma.git"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  }
+}
