@@ -651,5 +651,5 @@ gsap.to("#page7-circle-inner",{
       // markers:true
 
   },
-  backgroundColor: `#0a3bce91`,
+  backgroundColor: `#000000`,
 })
