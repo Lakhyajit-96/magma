@@ -1,0 +1,46 @@
+SCROLLSTORY CONTENT UPDATES - PHASE 1
+
+Page 2 (Value Proposition):
+H2: PREMIUM SCROLL STORYTELLING FOR BRANDS THAT DEMAND ATTENTION
+H1: ScrollStory is a no-code platform that transforms your content into cinematic scroll-driven experiences. Create immersive websites with advanced canvas animations, smooth scrolling, and professional design—without writing a single line of code.
+
+Page 4 (Target Audience):
+H3: BUILT FOR LUXURY BRANDS AND CREATIVE AGENCIES
+H1: Empower your team to create stunning scroll experiences without developers. Perfect for real estate showcases, product launches, portfolio sites, and brand storytelling that demands attention.
+
+Page 6 (Value & ROI):
+H3: INCREASE ENGAGEMENT AND CONVERSIONS
+H1: Immersive scroll experiences keep visitors engaged 3x longer, increase conversion rates by up to 40%, and create memorable brand impressions that drive results.
+
+Page 8 (Product):
+H1: ScrollStory Platform
+Button: EXPLORE FEATURES
+
+Page 9 (What is):
+H1: What is ScrollStory?
+
+Page 10 (Features - 3 sections):
+Section 1:
+H1: No-Code Builder
+P: Create professional scroll experiences with our intuitive drag-and-drop interface. Choose from premium templates, customize animations, and publish in minutes—no coding required.
+
+Section 2:
+H1: Advanced Canvas Animations
+P: Bring your stories to life with cinematic frame-by-frame animations. Our optimized canvas engine delivers smooth 60fps performance across all devices, creating experiences that captivate.
+
+Section 3:
+H1: Performance Optimized
+P: Built for speed and reliability. Automatic image optimization, lazy loading, and CDN delivery ensure your scroll stories load instantly and perform flawlessly everywhere.
+
+Page 11:
+H1: Success Stories
+
+Page 12:
+H1: Trusted By
+P: Join leading brands and agencies creating immersive experiences that convert visitors into customers.
+
+Page 13:
+H1: Start creating today
+Button: GET STARTED FREE
+
+Page 14: (Keep social links as is)
