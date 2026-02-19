@@ -34,7 +34,7 @@
     <div id="main">
       <div data-scroll data-scroll-speed="-5" id="page1">
         <nav>
-          <img src="assets/logo-temp.svg" alt="ScrollStory Logo" srcset="" />
+          <img src="assets/logo.png" alt="logo not found" srcset="" />
           <div id="right-nav">
             <button>View Pricing</button>
             <button><i class="ri-menu-line"></i></button>
@@ -121,11 +121,12 @@
       <div id="page10">
         <div class="right10">
           <div class="right10-inner">
-            <h1>No-Code Builder</h1>
+            <h1>Web3 platform</h1>
             <p>
-              Create professional scroll experiences with our intuitive drag-and-drop 
-              interface. Choose from premium templates, customize animations, and 
-              publish in minutes—no coding required.
+              Magma is a Web3 platform for all real estate stakeholders, which
+              provides users with the ability to manage interactions between
+              physical and digital assets through unique, and collectively
+              generated, 3D representations of their buildings.
             </p>
           </div>
           <div class="right10-inner">
@@ -140,11 +141,11 @@
             </p>
           </div>
           <div class="right10-inner">
-            <h1>Performance Optimized</h1>
+            <h1>An Index of digitization</h1>
             <p>
-              Built for speed and reliability. Automatic image optimization, lazy 
-              loading, and CDN delivery ensure your scroll stories load instantly 
-              and perform flawlessly everywhere.
+              The Magma Index provides valuable insight for decision-making
+              regarding data-sharing, service-creating, and
+              operational/environmental expectations.
             </p>
           </div>
         </div>
@@ -190,11 +191,11 @@
       </div>
       <div id="page12">
         <div class="page12-inner">
-          <h1>Trusted By</h1>
+          <h1>Featured In</h1>
           <p>
-            Thrilled to have been Trusted By several prominent media <br />
+            Thrilled to have been featured in several prominent media <br />
             outlets and leading professionals across the world’s best <br />
-            drive measurable business results.
+            real estate and web3 institutions.
           </p>
         </div>
       </div>
