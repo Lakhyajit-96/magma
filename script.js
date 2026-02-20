@@ -1,3 +1,125 @@
+// ============================================
+// PREMIUM 3D LOADING OVERLAY WITH PERCENTAGE
+// ============================================
+
+let loadingProgress = 0;
+const loadingOverlay = document.getElementById('loading-overlay');
+const progressBarFill = document.querySelector('.progress-bar-fill');
+const percentageText = document.querySelector('.percentage-text');
+
+// Simulate loading progress - slower for better visibility
+function updateLoadingProgress() {
+    if (loadingProgress < 100) {
+        loadingProgress += Math.random() * 8; // Slower loading for visibility
+        if (loadingProgress > 100) loadingProgress = 100;
+        
+        // Update progress bar
+        if (progressBarFill) progressBarFill.style.width = loadingProgress + '%';
+        
+        // Update percentage text
+        if (percentageText) percentageText.textContent = Math.floor(loadingProgress);
+        
+        setTimeout(updateLoadingProgress, 150); // 150ms interval for smooth animation
+    } else {
+        // Loading complete - fade out
+        setTimeout(() => {
+            if (loadingOverlay) {
+                loadingOverlay.style.opacity = '0';
+                setTimeout(() => {
+                    loadingOverlay.style.display = 'none';
+                }, 800);
+            }
+        }, 500); // Show 100% for 500ms
+    }
+}
+
+// Start loading animation
+if (loadingOverlay) {
+    updateLoadingProgress();
+}
+
+// Also hide on window load as fallback
+window.addEventListener('load', function() {
+    loadingProgress = 100;
+});
+
+// ============================================
+// NAVIGATION GLASSMORPHISM ON SCROLL
+// ============================================
+
+const nav = document.querySelector('#page1 > nav');
+let lastScrollY = 0;
+
+window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+    
+    if (currentScrollY > 100) {
+        nav.classList.add('scrolled');
+    } else {
+        nav.classList.remove('scrolled');
+    }
+    
+    lastScrollY = currentScrollY;
+});
+
+// ============================================
+// HERO MOUSE SPOTLIGHT EFFECT
+// ============================================
+
+const spotlight = document.querySelector('.spotlight');
+const page1 = document.querySelector('#page1');
+
+if (spotlight && page1) {
+    page1.addEventListener('mousemove', (e) => {
+        const rect = page1.getBoundingClientRect();
+        const x = e.clientX - rect.left - 300; // Center the spotlight
+        const y = e.clientY - rect.top - 300;
+        
+        spotlight.style.transform = `translate(${x}px, ${y}px)`;
+        spotlight.style.opacity = '1';
+    });
+    
+    page1.addEventListener('mouseleave', () => {
+        spotlight.style.opacity = '0';
+    });
+}
+
+// ============================================
+// SCROLL PROGRESS INDICATOR
+// ============================================
+
+function updateScrollProgress() {
+    const scrollProgress = document.getElementById('scroll-progress');
+    if (!scrollProgress) return;
+    
+    const mainElement = document.querySelector('#main');
+    if (!mainElement) return;
+    
+    // Calculate scroll percentage
+    const scrollTop = mainElement.scrollTop || 0;
+    const scrollHeight = mainElement.scrollHeight - mainElement.clientHeight;
+    const scrollPercentage = (scrollTop / scrollHeight) * 100;
+    
+    // Update progress bar width
+    scrollProgress.style.width = scrollPercentage + '%';
+}
+
+// Update progress on scroll (works with Locomotive Scroll)
+if (document.querySelector('#main')) {
+    // Initial update
+    updateScrollProgress();
+    
+    // Listen to scroll events on main container
+    document.querySelector('#main').addEventListener('scroll', updateScrollProgress);
+    
+    // Also update on window resize
+    window.addEventListener('resize', updateScrollProgress);
+}
+
+// ============================================
+// SCROLL ANIMATION CODE
+// ============================================
+
 // Scroll Animation Code
 function loco(){
     gsap.registerPlugin(ScrollTrigger);
@@ -9,7 +131,16 @@ const locoScroll = new LocomotiveScroll({
   smooth: true
 });
 // each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
-locoScroll.on("scroll", ScrollTrigger.update);
+locoScroll.on("scroll", function(args) {
+    ScrollTrigger.update();
+    
+    // Update scroll progress indicator with Locomotive Scroll
+    const scrollProgress = document.getElementById('scroll-progress');
+    if (scrollProgress && args.scroll) {
+        const scrollPercentage = (args.scroll.y / args.limit.y) * 100;
+        scrollProgress.style.width = scrollPercentage + '%';
+    }
+});
 
 // tell ScrollTrigger to use these proxy methods for the "#main" element since Locomotive Scroll is hijacking things
 ScrollTrigger.scrollerProxy("#main", {
@@ -35,26 +166,59 @@ ScrollTrigger.refresh();
 }
 loco();
 
-// Page2 H1 animation code
-var clutter = "";
+// ============================================
+// TEXT SECTIONS - WORD-BY-WORD REVEAL WITH GLOW
+// ============================================
 
-document.querySelector("#page2>h1").textContent.split("").forEach(function(dets){
-    clutter += `<span>${dets}</span>`
+// Page2 H1 animation - Word by word
+function animateTextSection(selector) {
+    const element = document.querySelector(selector);
+    if (!element) return;
+    
+    const text = element.textContent.trim();
+    const words = text.split(/\s+/); // Split by any whitespace
+    element.innerHTML = '';
+    
+    words.forEach((word, index) => {
+        const wordSpan = document.createElement('span');
+        wordSpan.className = 'word-reveal';
+        wordSpan.textContent = word;
+        element.appendChild(wordSpan);
+        
+        // Add space after each word except the last one
+        if (index < words.length - 1) {
+            const space = document.createElement('span');
+            space.className = 'word-space';
+            space.textContent = ' ';
+            element.appendChild(space);
+        }
+    });
+    
+    gsap.to(`${selector} .word-reveal`, {
+        scrollTrigger: {
+            trigger: selector,
+            start: 'top 80%',
+            end: 'bottom 60%',
+            scroller: '#main',
+            scrub: 0.5,
+        },
+        stagger: 0.1,
+        color: '#fff',
+        textShadow: '0 0 20px rgba(24, 99, 255, 0.6), 0 0 40px rgba(24, 99, 255, 0.3)',
+        ease: 'power2.out'
+    });
+}
 
-    document.querySelector("#page2>h1").innerHTML = clutter;
-})
+// Apply to all text sections
+animateTextSection('#page2>h1');
+animateTextSection('#page4>h1');
+animateTextSection('#page6>h1');
 
-gsap.to("#page2>h1>span",{
-    scrollTrigger:{
-        trigger:`#page2>h1>span`,
-        start:`top bottom`,
-        end:`bottom top`,
-        scroller:`#main`,
-        scrub:.5,    
-    },
-    stagger:.2,
-    color:`#fff`
-})
+// Add gradient animation to h2 headings
+const headings = document.querySelectorAll('#page2>h2, #page4>h3, #page6>h3');
+headings.forEach(heading => {
+    heading.classList.add('gradient-heading');
+});
 
 
 // Page3 canvas code
@@ -208,26 +372,42 @@ end: `250% top`,
 }
 canvas()
 
-// Page4 h1 animation
-var clutter = "";
-
-document.querySelector("#page4>h1").textContent.split("").forEach(function(dets){
-  clutter += `<span>${dets}</span>`
-
-  document.querySelector("#page4>h1").innerHTML = clutter;
-})
-
-gsap.to("#page4>h1>span",{
-scrollTrigger:{
-    trigger:`#page4>h1>span`,
-    start:`top bottom`,
-    end:`bottom top`,
-    scroller:`#main`,
-    scrub:.5,
-},
-stagger:.2,
-color:`#fff`
-})
+// Page4 h1 animation - Word by word
+const page4H1 = document.querySelector("#page4>h1");
+if (page4H1) {
+    const text = page4H1.textContent.trim();
+    const words = text.split(/\s+/); // Split by any whitespace
+    page4H1.innerHTML = '';
+    
+    words.forEach((word, index) => {
+        const wordSpan = document.createElement('span');
+        wordSpan.className = 'word-reveal';
+        wordSpan.textContent = word;
+        page4H1.appendChild(wordSpan);
+        
+        // Add space after each word except the last one
+        if (index < words.length - 1) {
+            const space = document.createElement('span');
+            space.className = 'word-space';
+            space.textContent = ' ';
+            page4H1.appendChild(space);
+        }
+    });
+    
+    gsap.to("#page4>h1 .word-reveal", {
+        scrollTrigger: {
+            trigger: "#page4>h1",
+            start: 'top 80%',
+            end: 'bottom 60%',
+            scroller: '#main',
+            scrub: 0.5,
+        },
+        stagger: 0.1,
+        color: '#fff',
+        textShadow: '0 0 20px rgba(24, 99, 255, 0.6)',
+        ease: 'power2.out'
+    });
+}
 
 function canvas1(){
 const canvas = document.querySelector("#page5>canvas");
@@ -299,24 +479,11 @@ assets/bridges00154.png
 assets/bridges00157.png
 assets/bridges00160.png
 assets/bridges00163.png
-assets/bridges00166.png
-assets/bridges00169.png
-assets/bridges00172.png
-assets/bridges00175.png
-assets/bridges00178.png
-assets/bridges00181.png
-assets/bridges00184.png
-assets/bridges00187.png
-assets/bridges00190.png
-assets/bridges00193.png
-assets/bridges00196.png
-assets/bridges00199.png
-assets/bridges00202.png
 `;
 return data.split("\n")[index];
 }
 
-const frameCount = 67;
+const frameCount = 54;
 
 const images = [];
 const imageSeq = {
@@ -399,6 +566,54 @@ gsap.to("#page6>h1>span",{
   stagger:.2,
   color:`#fff`
 })
+
+// ============================================
+// FEATURE CARDS - 3D TILT & STAGGER ANIMATIONS
+// ============================================
+
+const featureCards = document.querySelectorAll('.feature-card');
+
+// 3D Tilt Effect
+featureCards.forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    const rotateX = (y - centerY) / 10;
+    const rotateY = (centerX - x) / 10;
+    
+    card.style.transform = `translateY(-10px) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  });
+  
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'translateY(0) perspective(1000px) rotateX(0) rotateY(0)';
+  });
+});
+
+// Stagger entrance animations with Intersection Observer
+const observerOptions = {
+  threshold: 0.2,
+  rootMargin: '0px'
+};
+
+const cardObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, index * 200);
+      cardObserver.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+featureCards.forEach(card => {
+  cardObserver.observe(card);
+});
 
 // Page7 canvas
 
@@ -651,5 +866,154 @@ gsap.to("#page7-circle-inner",{
       // markers:true
 
   },
-  backgroundColor: `#000000`,
+  // Keep transparent background
+  scale: 1.05
 })
+
+
+// ============================================
+// SUCCESS STORIES - PARALLAX & SLIDE-IN ANIMATIONS
+// ============================================
+
+const storyCards = document.querySelectorAll('.story-card');
+
+// Intersection Observer for slide-in animations
+const storyObserverOptions = {
+  threshold: 0.2,
+  rootMargin: '0px'
+};
+
+const storyObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      storyObserver.unobserve(entry.target);
+    }
+  });
+}, storyObserverOptions);
+
+storyCards.forEach(card => {
+  storyObserver.observe(card);
+  
+  // Parallax image movement on mouse move
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    const moveX = (x - centerX) / 20;
+    const moveY = (y - centerY) / 20;
+    
+    const img = card.querySelector('.left11 img');
+    if (img) {
+      img.style.transform = `scale(1.1) translate(${moveX}px, ${moveY}px)`;
+    }
+  });
+  
+  card.addEventListener('mouseleave', () => {
+    const img = card.querySelector('.left11 img');
+    if (img) {
+      img.style.transform = 'scale(1)';
+    }
+  });
+});
+
+// ============================================
+// CURSOR TRAIL EFFECT
+// ============================================
+
+const cursorTrails = [];
+const trailCount = 8;
+
+// Create cursor trail elements
+for (let i = 0; i < trailCount; i++) {
+  const trail = document.createElement('div');
+  trail.className = 'cursor-trail';
+  document.body.appendChild(trail);
+  cursorTrails.push({
+    element: trail,
+    x: 0,
+    y: 0,
+    targetX: 0,
+    targetY: 0
+  });
+}
+
+let mouseX = 0;
+let mouseY = 0;
+
+document.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+// Animate cursor trails
+function animateCursorTrails() {
+  cursorTrails.forEach((trail, index) => {
+    const delay = index * 0.05;
+    
+    trail.targetX = mouseX;
+    trail.targetY = mouseY;
+    
+    trail.x += (trail.targetX - trail.x) * (0.2 - delay);
+    trail.y += (trail.targetY - trail.y) * (0.2 - delay);
+    
+    trail.element.style.transform = `translate(${trail.x - 4}px, ${trail.y - 4}px)`;
+    trail.element.style.opacity = 1 - (index / trailCount) * 0.8;
+  });
+  
+  requestAnimationFrame(animateCursorTrails);
+}
+
+animateCursorTrails();
+
+// ============================================
+// INTERSECTION OBSERVER FOR LAZY ANIMATIONS
+// ============================================
+
+const lazyAnimElements = document.querySelectorAll('#page2, #page4, #page6, #page9, #page12, #page13');
+
+const lazyObserverOptions = {
+  threshold: 0.15,
+  rootMargin: '0px'
+};
+
+const lazyObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, lazyObserverOptions);
+
+lazyAnimElements.forEach(element => {
+  element.style.opacity = '0';
+  element.style.transform = 'translateY(30px)';
+  element.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+  lazyObserver.observe(element);
+});
+
+// ============================================
+// SOCIAL LINKS - PLATFORM LOGOS
+// ============================================
+
+const socialLinks = document.querySelectorAll('.page14-inner');
+
+socialLinks.forEach((link, index) => {
+  const logo = document.createElement('i');
+  logo.className = 'social-logo';
+  
+  if (index === 0) {
+    logo.classList.add('ri-twitter-x-line');
+  } else if (index === 1) {
+    logo.classList.add('ri-linkedin-box-fill');
+  } else if (index === 2) {
+    logo.classList.add('ri-instagram-line');
+  }
+  
+  link.insertBefore(logo, link.firstChild);
+});

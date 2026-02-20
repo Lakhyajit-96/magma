@@ -18,7 +18,11 @@
     <meta name="twitter:title" content="ScrollStory - Premium Scroll Storytelling Platform" />
     <meta name="twitter:description" content="Create cinematic scroll-driven experiences that captivate your audience." />
     
-    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=2">
+    <link rel="alternate icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css"
@@ -27,21 +31,117 @@
       href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css?v=11" />
     <title>ScrollStory - Premium Scroll Storytelling Platform</title>
   </head>
   <body>
+    <!-- Premium 3D Loading Overlay -->
+    <div id="loading-overlay">
+      <div class="loading-content">
+        <!-- 3D Rotating Cube with Logo -->
+        <div class="loader-3d-container">
+          <div class="loader-cube">
+            <div class="cube-face front">
+              <svg width="60" height="60" viewBox="0 0 60 60">
+                <defs>
+                  <linearGradient id="cubeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#1863ff;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#0b48ed;stop-opacity:1" />
+                  </linearGradient>
+                </defs>
+                <path d="M 20 18 Q 20 13, 25 13 L 35 13 Q 40 13, 40 18 Q 40 23, 35 23 L 25 23 Q 20 23, 20 28 Q 20 33, 25 33 L 35 33 Q 40 33, 40 38" 
+                      stroke="url(#cubeGrad)" stroke-width="3" fill="none" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="cube-face back">
+              <svg width="60" height="60" viewBox="0 0 60 60">
+                <path d="M 20 18 Q 20 13, 25 13 L 35 13 Q 40 13, 40 18 Q 40 23, 35 23 L 25 23 Q 20 23, 20 28 Q 20 33, 25 33 L 35 33 Q 40 33, 40 38" 
+                      stroke="url(#cubeGrad)" stroke-width="3" fill="none" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="cube-face left"></div>
+            <div class="cube-face right"></div>
+            <div class="cube-face top"></div>
+            <div class="cube-face bottom"></div>
+          </div>
+          
+          <!-- Orbiting Rings -->
+          <div class="orbit-ring ring-1"></div>
+          <div class="orbit-ring ring-2"></div>
+          <div class="orbit-ring ring-3"></div>
+          
+          <!-- Floating Particles -->
+          <div class="loader-particles">
+            <span class="particle-dot"></span>
+            <span class="particle-dot"></span>
+            <span class="particle-dot"></span>
+            <span class="particle-dot"></span>
+            <span class="particle-dot"></span>
+            <span class="particle-dot"></span>
+          </div>
+        </div>
+        
+        <!-- Glassmorphism Progress Bar -->
+        <div class="progress-container">
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill"></div>
+          </div>
+        </div>
+        
+        <!-- Percentage Display -->
+        <div class="percentage-display">
+          <span class="percentage-text">0</span>
+          <span class="percentage-symbol">%</span>
+        </div>
+        
+        <p class="loading-text">Loading Experience</p>
+        
+        <!-- Animated Dots -->
+        <div class="loading-dots">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+      
+      <!-- Background Grid Effect -->
+      <div class="grid-background"></div>
+    </div>
+    
+    <!-- Scroll Progress Indicator -->
+    <div id="scroll-progress"></div>
+    
+    <!-- SVG Definitions for Icons -->
+    <svg width="0" height="0" style="position: absolute;">
+      <defs>
+        <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#0b48ed;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#1863ff;stop-opacity:1" />
+        </linearGradient>
+      </defs>
+    </svg>
+    
     <div id="main">
       <div data-scroll data-scroll-speed="-5" id="page1">
+        <!-- Floating particles background -->
+        <div class="particles-container">
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+          <div class="particle"></div>
+        </div>
+        
+        <!-- Mouse spotlight effect -->
+        <div class="spotlight"></div>
+        
         <nav>
-          <img src="assets/logo-temp.svg" alt="ScrollStory Logo" srcset="" />
+          <img src="assets/scrollstory-logo.svg" alt="ScrollStory - Premium Scroll Storytelling Platform" srcset="" />
           <div id="right-nav">
             <button>View Pricing</button>
             <button><i class="ri-menu-line"></i></button>
           </div>
         </nav>
-        <div id="bottom-page1">
-          <h1>
+        <div id="bottom-page1" data-scroll data-scroll-speed="-2">
+          <h1 class="gradient-text">
             Transform stories <br />
             into experiences
           </h1>
@@ -62,31 +162,29 @@
       <div id="page2">
         <h2>PREMIUM SCROLL STORYTELLING FOR BRANDS THAT DEMAND ATTENTION</h2>
         <h1>
-          The Digital Twin Token is a unique digital asset backed by property
-          data. Magma combines your building’s components and systems essential
-          information into a DTT.
+          Create immersive scroll experiences that captivate your audience and drive engagement. ScrollStory combines cutting-edge canvas animations with intuitive design tools to bring your brand story to life.
         </h1>
       </div>
       <div id="page3">
         <canvas> </canvas>
+        <div class="frame-counter" id="frame-counter-3">Frame: 1 / 67</div>
+        <div class="canvas-vignette"></div>
       </div>
       <div id="page4">
         <h3>BUILT FOR LUXURY BRANDS AND CREATIVE AGENCIES</h3>
         <h1>
-          Empower your team to create stunning scroll experiences without developers. 
-          Perfect for real estate showcases, product launches, portfolio sites, and 
-          brand storytelling that demands attention.
+          Empower your team to create stunning scroll experiences without developers. Perfect for real estate showcases, product launches, portfolio sites, and brand storytelling that demands attention.
         </h1>
       </div>
       <div id="page5">
         <canvas></canvas>
+        <div class="frame-counter" id="frame-counter-5">Frame: 1 / 54</div>
+        <div class="canvas-vignette"></div>
       </div>
       <div id="page6">
-        <h3>INCREASE YOUR DIGITAL TWIN TOKEN’S VALUE</h3>
+        <h3>INCREASE ENGAGEMENT AND CONVERSIONS</h3>
         <h1>
-          DTT data increases the value of your digital asset by lowering
-          operational costs, improving energy use, assisting commercialization,
-          and boosting the liquidity of your building.
+          Scroll-driven storytelling increases user engagement by 300% and boosts conversion rates. Create memorable experiences that keep visitors scrolling, exploring, and taking action on your site.
         </h1>
       </div>
       <div id="page7">
@@ -94,6 +192,8 @@
           <div id="page7-circle-inner"></div>
         </div>
         <canvas></canvas>
+        <div class="frame-counter" id="frame-counter-7">Frame: 1 / 136</div>
+        <div class="canvas-vignette"></div>
       </div>
       <div id="page8">
         <div class="page8-bottom">
@@ -120,7 +220,13 @@
       </div>
       <div id="page10">
         <div class="right10">
-          <div class="right10-inner">
+          <div class="right10-inner feature-card" data-tilt>
+            <div class="feature-icon">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <rect x="8" y="8" width="32" height="32" rx="4" stroke="url(#iconGrad)" stroke-width="2"/>
+                <path d="M16 24h16M24 16v16" stroke="url(#iconGrad)" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
             <h1>No-Code Builder</h1>
             <p>
               Create professional scroll experiences with our intuitive drag-and-drop 
@@ -128,18 +234,24 @@
               publish in minutes—no coding required.
             </p>
           </div>
-          <div class="right10-inner">
-            <h1>The Digital Twin Token: The building’s unique digital copy</h1>
+          <div class="right10-inner feature-card" data-tilt>
+            <div class="feature-icon">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <circle cx="24" cy="24" r="16" stroke="url(#iconGrad)" stroke-width="2"/>
+                <path d="M24 12v24M12 24h24" stroke="url(#iconGrad)" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h1>Advanced Canvas Animations</h1>
             <p>
-              Magma uses blockchain technology to record essential data, which
-              enables transparent, traceable, and immutable streams of
-              information to be readily accessible to its users. Magma smart
-              contracts are built with this blockchain data to expedite tasks
-              like requests for proposals, lease agreements, and services
-              arrangements.
+              Bring your content to life with cinematic canvas animations. Frame-by-frame sequences, smooth transitions, and scroll-triggered effects create immersive experiences that captivate and engage your audience.
             </p>
           </div>
-          <div class="right10-inner">
+          <div class="right10-inner feature-card" data-tilt>
+            <div class="feature-icon">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <path d="M24 8l-4 8h8l-4 8 8-4-8 12" stroke="url(#iconGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
             <h1>Performance Optimized</h1>
             <p>
               Built for speed and reliability. Automatic image optimization, lazy 
@@ -151,40 +263,49 @@
       </div>
       <div id="page11">
         <h1>Success Stories</h1>
-        <div class="page11-inner">
-          <div class="left11">
+        <div class="page11-inner story-card" data-parallax>
+          <div class="left11 story-image-wrapper">
             <img
               src="https://thisismagma.com/wp-content/uploads/2023/05/thisismagma.com-magma-a-la-3eme-edition-du-tech-talk-de-cbre-france-1684942208038.jpeg"
-              alt=""
+              alt="Success Story"
             />
+            <div class="story-overlay">
+              <span class="read-more">Read More →</span>
+            </div>
           </div>
           <div class="right11">
-            <h4>MAY 30,2023</h4>
-            <h1>Magma At CBRE France's 3rd Tech Talk</h1>
+            <h4>JANUARY 15, 2026</h4>
+            <h1>Luxury Real Estate Firm Increases Engagement by 400%</h1>
           </div>
         </div>
-        <div class="page11-inner">
-          <div class="left11">
+        <div class="page11-inner story-card" data-parallax>
+          <div class="left11 story-image-wrapper">
             <img
               src="https://thisismagma.com/wp-content/uploads/2023/05/thisismagma.com-workshop-blockchain-et-actif-digitaux-sba-16-min-scaled.jpg"
-              alt=""
+              alt="Success Story"
             />
+            <div class="story-overlay">
+              <span class="read-more">Read More →</span>
+            </div>
           </div>
           <div class="right11">
-            <h4>MAY 30,2023</h4>
-            <h1>Magma At CBRE France's 3rd Tech Talk</h1>
+            <h4>DECEMBER 8, 2025</h4>
+            <h1>Creative Agency Launches Award-Winning Portfolio Site</h1>
           </div>
         </div>
-        <div class="page11-inner">
-          <div class="left11">
+        <div class="page11-inner story-card" data-parallax>
+          <div class="left11 story-image-wrapper">
             <img
               src="https://thisismagma.com/wp-content/uploads/2023/03/magma.wp2.cubdev.com-exploring-the-potential-of-real-estate-tokenization-digital-twins-magma.png"
-              alt=""
+              alt="Success Story"
             />
+            <div class="story-overlay">
+              <span class="read-more">Read More →</span>
+            </div>
           </div>
           <div class="right11">
-            <h4>MAY 30,2023</h4>
-            <h1>Magma At CBRE France's 3rd Tech Talk</h1>
+            <h4>NOVEMBER 22, 2025</h4>
+            <h1>Product Launch Drives 250% More Conversions</h1>
           </div>
         </div>
       </div>
@@ -237,6 +358,6 @@
       referrerpolicy="no-referrer"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
-    <script src="script.js"></script>
+    <script src="script.js?v=9"></script>
   </body>
 </html>

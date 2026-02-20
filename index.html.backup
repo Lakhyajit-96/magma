@@ -18,7 +18,11 @@
     <meta name="twitter:title" content="ScrollStory - Premium Scroll Storytelling Platform" />
     <meta name="twitter:description" content="Create cinematic scroll-driven experiences that captivate your audience." />
     
-    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="alternate icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css"
@@ -27,14 +31,37 @@
       href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css?v=3" />
     <title>ScrollStory - Premium Scroll Storytelling Platform</title>
   </head>
   <body>
+    <!-- Premium Loading Overlay -->
+    <div id="loading-overlay">
+      <div class="loading-content">
+        <div class="logo-loader">
+          <svg width="80" height="80" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="45" stroke="url(#gradient)" stroke-width="3" fill="none" 
+                    stroke-dasharray="283" stroke-dashoffset="283" class="progress-ring"/>
+            <text x="50" y="58" text-anchor="middle" class="percentage-text">0%</text>
+            <defs>
+              <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#0b48ed;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#1863ff;stop-opacity:1" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <p class="loading-text">Loading Experience...</p>
+      </div>
+    </div>
+    
+    <!-- Scroll Progress Indicator -->
+    <div id="scroll-progress"></div>
+    
     <div id="main">
       <div data-scroll data-scroll-speed="-5" id="page1">
         <nav>
-          <img src="assets/logo.png" alt="logo not found" srcset="" />
+          <img src="assets/scrollstory-logo.svg" alt="ScrollStory - Premium Scroll Storytelling Platform" srcset="" />
           <div id="right-nav">
             <button>View Pricing</button>
             <button><i class="ri-menu-line"></i></button>
@@ -62,9 +89,7 @@
       <div id="page2">
         <h2>PREMIUM SCROLL STORYTELLING FOR BRANDS THAT DEMAND ATTENTION</h2>
         <h1>
-          The Digital Twin Token is a unique digital asset backed by property
-          data. Magma combines your building’s components and systems essential
-          information into a DTT.
+          Create immersive scroll experiences that captivate your audience and drive engagement. ScrollStory combines cutting-edge canvas animations with intuitive design tools to bring your brand story to life.
         </h1>
       </div>
       <div id="page3">
@@ -82,11 +107,9 @@
         <canvas></canvas>
       </div>
       <div id="page6">
-        <h3>INCREASE YOUR DIGITAL TWIN TOKEN’S VALUE</h3>
+        <h3>INCREASE ENGAGEMENT AND CONVERSIONS</h3>
         <h1>
-          DTT data increases the value of your digital asset by lowering
-          operational costs, improving energy use, assisting commercialization,
-          and boosting the liquidity of your building.
+          Scroll-driven storytelling increases user engagement by 300% and boosts conversion rates. Create memorable experiences that keep visitors scrolling, exploring, and taking action on your site.
         </h1>
       </div>
       <div id="page7">
@@ -121,31 +144,25 @@
       <div id="page10">
         <div class="right10">
           <div class="right10-inner">
-            <h1>Web3 platform</h1>
+            <h1>No-Code Builder</h1>
             <p>
-              Magma is a Web3 platform for all real estate stakeholders, which
-              provides users with the ability to manage interactions between
-              physical and digital assets through unique, and collectively
-              generated, 3D representations of their buildings.
+              Create professional scroll experiences with our intuitive drag-and-drop 
+              interface. Choose from premium templates, customize animations, and 
+              publish in minutes—no coding required.
             </p>
           </div>
           <div class="right10-inner">
-            <h1>The Digital Twin Token: The building’s unique digital copy</h1>
+            <h1>Advanced Canvas Animations</h1>
             <p>
-              Magma uses blockchain technology to record essential data, which
-              enables transparent, traceable, and immutable streams of
-              information to be readily accessible to its users. Magma smart
-              contracts are built with this blockchain data to expedite tasks
-              like requests for proposals, lease agreements, and services
-              arrangements.
+              Bring your content to life with cinematic canvas animations. Frame-by-frame sequences, smooth transitions, and scroll-triggered effects create immersive experiences that captivate and engage your audience.
             </p>
           </div>
           <div class="right10-inner">
-            <h1>An Index of digitization</h1>
+            <h1>Performance Optimized</h1>
             <p>
-              The Magma Index provides valuable insight for decision-making
-              regarding data-sharing, service-creating, and
-              operational/environmental expectations.
+              Built for speed and reliability. Automatic image optimization, lazy 
+              loading, and CDN delivery ensure your scroll stories load instantly 
+              and perform flawlessly everywhere.
             </p>
           </div>
         </div>
@@ -160,8 +177,8 @@
             />
           </div>
           <div class="right11">
-            <h4>MAY 30,2023</h4>
-            <h1>Magma At CBRE France's 3rd Tech Talk</h1>
+            <h4>JANUARY 15, 2026</h4>
+            <h1>Luxury Real Estate Firm Increases Engagement by 400%</h1>
           </div>
         </div>
         <div class="page11-inner">
@@ -172,8 +189,8 @@
             />
           </div>
           <div class="right11">
-            <h4>MAY 30,2023</h4>
-            <h1>Magma At CBRE France's 3rd Tech Talk</h1>
+            <h4>DECEMBER 8, 2025</h4>
+            <h1>Creative Agency Launches Award-Winning Portfolio Site</h1>
           </div>
         </div>
         <div class="page11-inner">
@@ -184,18 +201,18 @@
             />
           </div>
           <div class="right11">
-            <h4>MAY 30,2023</h4>
-            <h1>Magma At CBRE France's 3rd Tech Talk</h1>
+            <h4>NOVEMBER 22, 2025</h4>
+            <h1>Product Launch Drives 250% More Conversions</h1>
           </div>
         </div>
       </div>
       <div id="page12">
         <div class="page12-inner">
-          <h1>Featured In</h1>
+          <h1>Trusted By</h1>
           <p>
-            Thrilled to have been featured in several prominent media <br />
+            Thrilled to have been Trusted By several prominent media <br />
             outlets and leading professionals across the world’s best <br />
-            real estate and web3 institutions.
+            drive measurable business results.
           </p>
         </div>
       </div>
@@ -238,6 +255,6 @@
       referrerpolicy="no-referrer"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
-    <script src="script.js"></script>
+    <script src="script.js?v=2"></script>
   </body>
 </html>
