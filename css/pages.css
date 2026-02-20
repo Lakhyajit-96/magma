@@ -1,0 +1,307 @@
+/* ============================================ */
+/* PAGE-SPECIFIC STYLES */
+/* ============================================ */
+
+/* Pricing Page */
+.pricing-hero {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: radial-gradient(ellipse at center, #0a0a0a 0%, #000000 100%);
+  padding: 120px 30px 60px;
+}
+
+.pricing-hero-content h1 {
+  font-family: 'Gilroy', sans-serif;
+  font-size: 5vw;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.pricing-hero-content p {
+  font-family: 'Gilroy', sans-serif;
+  font-size: 1.3vw;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.pricing-section {
+  padding: 80px 30px;
+  background: #000;
+}
+
+.pricing-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.pricing-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 40px 30px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.pricing-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(24, 99, 255, 0.05), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(24, 99, 255, 0.5);
+  box-shadow: 0 20px 60px rgba(24, 99, 255, 0.3);
+}
+
+.pricing-card:hover::before {
+  opacity: 1;
+}
+
+.pricing-card.featured {
+  border-color: #1863ff;
+  background: rgba(24, 99, 255, 0.05);
+  transform: scale(1.05);
+}
+
+.pricing-card.featured:hover {
+  transform: scale(1.08) translateY(-10px);
+}
+
+.popular-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #1863ff, #0b48ed);
+  color: #fff;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.pricing-card-header {
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.pricing-card-header h3 {
+  font-family: 'Gilroy', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.pricing-price {
+  margin: 20px 0;
+}
+
+.price-amount {
+  font-family: 'Gilroy', sans-serif;
+  font-size: 56px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #fff 0%, #1863ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.price-period {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-left: 5px;
+}
+
+.pricing-description {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 15px;
+}
+
+.pricing-card-features {
+  margin: 30px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  color: #fff;
+  font-size: 15px;
+}
+
+.feature-item i {
+  font-size: 20px;
+  color: #10b981;
+  flex-shrink: 0;
+}
+
+.feature-item.disabled {
+  opacity: 0.4;
+}
+
+.feature-item.disabled i {
+  color: #ef4444;
+}
+
+.pricing-card .btn {
+  width: 100%;
+  margin-top: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* FAQ Section */
+.faq-section {
+  padding: 80px 30px;
+  background: #000;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.faq-section h2 {
+  font-family: 'Gilroy', sans-serif;
+  font-size: 3vw;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.faq-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.faq-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+  border-color: rgba(24, 99, 255, 0.3);
+}
+
+.faq-question {
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.faq-question h4 {
+  font-family: 'Gilroy', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+  margin: 0;
+}
+
+.faq-question i {
+  font-size: 24px;
+  color: #1863ff;
+  transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question i {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 200px;
+}
+
+.faq-answer p {
+  padding: 0 24px 24px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* CTA Section */
+.cta-section {
+  padding: 100px 30px;
+  text-align: center;
+  background: radial-gradient(ellipse at center, rgba(24, 99, 255, 0.1) 0%, #000 70%);
+}
+
+.cta-section h2 {
+  font-family: 'Gilroy', sans-serif;
+  font-size: 4vw;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.cta-section p {
+  font-size: 1.3vw;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 40px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pricing-hero-content h1 {
+    font-size: 8vw;
+  }
+
+  .pricing-hero-content p {
+    font-size: 4vw;
+  }
+
+  .pricing-container {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-card.featured {
+    transform: scale(1);
+  }
+
+  .faq-section h2 {
+    font-size: 6vw;
+  }
+
+  .cta-section h2 {
+    font-size: 7vw;
+  }
+
+  .cta-section p {
+    font-size: 4vw;
+  }
+}
